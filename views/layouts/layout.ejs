@@ -7,10 +7,9 @@
     <title>Node Brary</title>
 </head>
 <body>
-    Before
-    <br>
-     <%- body %>
-    <br>
-    AFTER 
+    <%- include('../partials/header') %>
+    <%- include('../partials/errorMessage') %>
+    <%- body %>
+    <%- include('../partials/footer') %>
 </body>
 </html>
