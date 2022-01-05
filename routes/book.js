@@ -5,12 +5,7 @@ const Book = require('../models/book')
 const multer = require('multer')
 const path = require('path')
 const fs = require('fs')
-const imageMIMETypes = [
-    'images/gif',
-    'images/jpeg',
-    'images/png',
-    'images/svg+xml'
-];
+const imageMIMETypes = ['images/gif','images/jpeg','images/png','images/svg+xml'];
 const uploadPath = path.join('public', Book.coverImageBasePath)
 
 const upload = multer({ 
@@ -21,6 +16,12 @@ router.get('/', async (req, res) => {
     const searchOption = {};
     if( req.query.name != null && req.query.name !== '' ){
         searchOption.title = new RegExp(req.query.name, 'i')
+    }
+    if( req.query.publishBefore != null && req.query.publishBefore !== '' ){
+        searchOption.publishDate = { $lt: req.query.publishBefore }
+    }
+    if( req.query.publishAfter != null && req.query.publishAfter !== '' ){
+        searchOption.publishDate = { $gt: req.query.publishAfter }
     }
     try {
         const books = await Book.find(searchOption)

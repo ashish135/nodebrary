@@ -1,6 +1,8 @@
 <h2>Search Books</h2>
 <form action="/books" method="get">
-    <input type="text" name="name" value="<%= searchOption.name %>" placeholder="Search Books">
+    <input type="text" name="name" value="<%= searchOption.name %>" placeholder="Search Book by Title">
+    <input type="date" name="publishBefore" value="<%= searchOption.publishBefore %>" placeholder="Search Book by date">
+    <input type="date" name="publishAfter" value="<%= searchOption.publishAfter %>" placeholder="Search Book by date">
     <button>Search</button>
 </form>
 <hr>
@@ -8,6 +10,7 @@
     <% books.forEach( book => { %>
         <img  width="100" height="150" src="<%= book.coverImagePath %>">
         <label><%= book.title %></label>
+        <small><%= book.publishDate.toISOString().split('T')[0] %></small>
     <% }) %>
 <% } else { %>    
     No Books found!
