@@ -1,0 +1,14 @@
+<h2>Search Books</h2>
+<form action="/books" method="get">
+    <input type="text" name="name" value="<%= searchOption.name %>" placeholder="Search Books">
+    <button>Search</button>
+</form>
+<hr>
+<% if(locals.books != null) { %>
+    <% books.forEach( book => { %>
+        <img  width="100" height="150" src="<%= book.coverImagePath %>">
+        <label><%= book.title %></label>
+    <% }) %>
+<% } else { %>    
+    No Books found!
+<% } %>

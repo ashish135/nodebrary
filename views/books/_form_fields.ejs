@@ -1,0 +1,32 @@
+<div class="form-field">
+    <label>Title</label>
+    <input type="text" name="title" value="<%= book.title %>">
+</div>
+<div class="form-field">
+    <label>Description</label>
+    <textarea name="description" id="" cols="30" rows="10"><%= book.description %></textarea>
+</div>
+<div class="form-field">
+    <label>Author</label>
+    <select name="author">
+    <% authors.forEach( author => { %>
+        <% if(author.id == book,author) { %>
+            <option selected value="<%= author.id %>"><%= author.name %></option>
+        <% } else { %>
+            <option value="<%= author.id %>"><%= author.name %></option>
+        <% } %>    
+    <% }) %>
+    </select>
+</div>
+<div class="form-field">    
+    <label>Publish Date</label>
+    <input type="date" name="publishDate" value="<%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0] %>">
+</div>
+<div class="form-field">    
+    <label>Page Count</label>
+    <input type="number" name="pageCount" value="<%= book.pageCount %>">
+</div>
+<div class="form-field">    
+    <label>Image Cover</label>
+    <input type="file" name="cover" />
+</div>
