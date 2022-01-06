@@ -4,7 +4,7 @@
 </div>
 <div class="form-field">
     <label>Description</label>
-    <textarea name="description" id="" cols="30" rows="10"><%= book.description %></textarea>
+    <textarea name="description" id="" cols="30" rows="10"><%= book.description != '' && book.description != null ? book.description : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' %></textarea>
 </div>
 <div class="form-field">
     <label>Author</label>

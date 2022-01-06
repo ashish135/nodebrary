@@ -15,7 +15,7 @@
     <button>Search</button>
 </form>
 <hr>
-<% if(locals.books != null) { %>
+<% if(books.length > 0) { %>
     <% books.forEach( book => { %>
         <img  width="100" height="150" src="<%= book.coverImagePath %>">
         <label><%= book.title %></label>
