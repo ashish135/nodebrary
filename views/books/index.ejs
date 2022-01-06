@@ -1,8 +1,17 @@
 <h2>Search Books</h2>
 <form action="/books" method="get">
-    <input type="text" name="name" value="<%= searchOption.name %>" placeholder="Search Book by Title">
-    <input type="date" name="publishBefore" value="<%= searchOption.publishBefore %>" placeholder="Search Book by date">
-    <input type="date" name="publishAfter" value="<%= searchOption.publishAfter %>" placeholder="Search Book by date">
+    <div class="form-field">
+        <label>Search Book by Title</label>
+        <input type="text" name="name" value="<%= searchOption.name %>" placeholder="Search Book by Title">
+    </div>
+    <div class="form-field">
+        <label>Publish Before</label>
+        <input type="date" name="publishBefore" value="<%= searchOption.publishBefore %>" placeholder="Search Book by date">
+    </div>
+    <div class="form-field">
+        <label>Publish After</label>
+        <input type="date" name="publishAfter" value="<%= searchOption.publishAfter %>" placeholder="Search Book by date">
+    </div>
     <button>Search</button>
 </form>
 <hr>

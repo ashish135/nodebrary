@@ -5,11 +5,14 @@ const Book = require('../models/book')
 const multer = require('multer')
 const path = require('path')
 const fs = require('fs')
-const imageMIMETypes = ['images/gif','images/jpeg','images/png','images/svg+xml'];
+const imageMIMETypes = ['image/gif','image/jpeg','image/png','image/svg+xml'];
 const uploadPath = path.join('public', Book.coverImageBasePath)
 
 const upload = multer({ 
-    dest: uploadPath
+    dest: uploadPath,
+    fileFilter: (req, file, cb) => {
+        cb(null, imageMIMETypes.includes(file.mimetype))
+    }
  })
 //All Books list
 router.get('/', async (req, res) => {
@@ -37,7 +40,6 @@ router.get('/add', async (req, res) => {
 //Add to Library
 router.post('/', upload.single('cover'), async (req, res) => {
     const fileName = req.file != null ? req.file.filename : null;
-    console.log("Image ", req.file)
     const book = new Book({
         title: req.body.title,
         author: req.body.author,
@@ -66,7 +68,6 @@ function removeCoverImage(fileName){
 async function renderNewPage(res, book, hasError = false){
     try {
         const authors = await Author.find();
-        const book = new Book();
         const params = { 
             book: book, 
             authors: authors 
