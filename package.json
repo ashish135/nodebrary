@@ -17,6 +17,7 @@
     "express": "^4.17.2",
     "express-ejs-layouts": "^2.5.1",
     "filepond": "^4.30.3",
+    "method-override": "^3.0.0",
     "mongoose": "^6.1.4",
     "multer": "^1.4.4",
     "tailwindcss": "^3.0.9"
