@@ -6,7 +6,10 @@
 <hr>
 <% if(locals.authors != null) { %>
     <% authors.forEach( author => { %>
-        <li> <%= author.name %> </li>
+        <li> <a href="/authors/<%= author.id%>"><%= author.name %></a>
+            <a class="button" href="/authors/<%= author.id%>/edit">Edit</a>
+            <%- include('../partials/deleteForm', {url: `/authors/${author.id}` }) %>
+        </li>
     <% }) %>
 <% } else { %>    
     No authors found
